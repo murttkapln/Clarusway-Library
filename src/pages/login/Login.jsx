@@ -1,30 +1,28 @@
-import React, { useContext } from 'react'
-import {  FormLogin, LoginFlexDiv } from './Login.style'
-import AuthContext from '../../context/AuthContext'
-
+import React from 'react'
+import { FormContainer, Header, LoginContainer, StyledButton, StyledForm, StyledInput } from './Login.style'
+import { useAuthContext } from '../../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-const navigate = useNavigate()
-  const {setUser} = useContext(AuthContext)
-
-  const handlesubmit = (e) => {
-    e.preventDefault();
-    setUser({username:e.target[0].value,password:e.target[1].value})
+  const {setUser}= useAuthContext()
+  const navigate = useNavigate()
+  const handleSubmit = (e)=>{
+    e.preaventDefault()
+    setUser(true)
     navigate(-1)
-  }
 
+  }
   return (
-    <LoginFlexDiv pic="https://picsum.photos/1600/900">
- 
-        <FormLogin onSubmit={handlesubmit}>
-          <h1>LOGIN HERE</h1>
-          <input type="text" placeholder='USERNAME' required  />
-          <input type="password" placeholder='PASSWORD' required/>
-          <button type='submit'>LOGIN</button>
-        </FormLogin>
-   
-    </LoginFlexDiv>
+    <LoginContainer>
+      <FormContainer>
+        <Header>Login Here</Header>
+        <StyledForm>
+          <StyledInput type='text' placeholder='Username' required/>
+          <StyledInput type='password' placeholder='password' required/>
+          <StyledButton>Login</StyledButton>
+        </StyledForm>
+      </FormContainer>
+    </LoginContainer>
   )
 }
 
