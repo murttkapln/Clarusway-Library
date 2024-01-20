@@ -3,6 +3,7 @@ import { FormContainer, Header, LoginContainer, StyledButton, StyledForm, Styled
 import { useAuthContext } from '../../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
+
 const Login = () => {
   const {setUser}= useAuthContext()
   const navigate = useNavigate()
@@ -13,7 +14,7 @@ const Login = () => {
 
   }
   return (
-    <LoginContainer>
+    <LoginContainer onSubmit={handleSubmit}>
       <FormContainer>
         <Header>Login Here</Header>
         <StyledForm>
